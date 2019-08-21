@@ -1,3 +1,7 @@
+-- Table: public.an_municipio_monthly
+
+-- DROP TABLE public.an_municipio_monthly;
+
 CREATE TABLE public.an_municipio_monthly
 (
     fid bigint,
@@ -12,7 +16,6 @@ CREATE TABLE public.an_municipio_monthly
 WITH (
     OIDS = FALSE
 )
-
 TABLESPACE pg_default;
 
 ALTER TABLE public.an_municipio_monthly

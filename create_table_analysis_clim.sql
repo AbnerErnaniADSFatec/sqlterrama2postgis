@@ -1,3 +1,7 @@
+-- Table: public.an_municipio_merge_monthly
+
+-- DROP TABLE public.an_municipio_merge_monthly;
+
 CREATE TABLE public.an_municipio_merge_monthly
 (
     fid bigint,

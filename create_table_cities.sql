@@ -1,3 +1,7 @@
+-- Table: public.municipios_brasil
+
+-- DROP TABLE public.municipios_brasil;
+
 CREATE TABLE public.municipios_brasil
 (
     fid bigint NOT NULL,
