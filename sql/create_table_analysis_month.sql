@@ -1,7 +1,3 @@
--- Table: public.an_municipio_monthly
-
--- DROP TABLE public.an_municipio_monthly;
-
 CREATE TABLE public.an_municipio_monthly
 (
     fid bigint,
@@ -10,7 +6,7 @@ CREATE TABLE public.an_municipio_monthly
     maxima double precision,
     media double precision,
     mes text COLLATE pg_catalog."default",
-    pid_an_municipio_monthly integer NOT NULL DEFAULT nextval('an_municipio_monthly_pid_an_municipio_monthly_seq'::regclass),
+    pid_an_municipio_monthly integer NOT NULL,
     CONSTRAINT an_municipio_monthly_pk PRIMARY KEY (pid_an_municipio_monthly)
 )
 WITH (
@@ -20,3 +16,8 @@ TABLESPACE pg_default;
 
 ALTER TABLE public.an_municipio_monthly
     OWNER to chuva;
+
+COPY public.an_municipio_monthly
+    FROM '/csv/an_mensal.csv'
+    DELIMITER ';'
+    CSV HEADER;

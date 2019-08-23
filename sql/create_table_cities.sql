@@ -1,7 +1,3 @@
--- Table: public.municipios_brasil
-
--- DROP TABLE public.municipios_brasil;
-
 CREATE TABLE public.municipios_brasil
 (
     fid bigint NOT NULL,
@@ -25,14 +21,15 @@ WITH (
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public.municipios_brasil
-    OWNER to chuva;
-
--- Index: municipios_brasil_ogr_geometry_idx
-
--- DROP INDEX public.municipios_brasil_ogr_geometry_idx;
-
 CREATE INDEX municipios_brasil_ogr_geometry_idx
     ON public.municipios_brasil USING gist
     (ogr_geometry)
     TABLESPACE pg_default;
+
+ALTER TABLE public.municipios_brasil
+    OWNER to chuva;
+
+COPY public.municipios_brasil 
+    FROM '/csv/municipios_brasil.csv'
+    DELIMITER ';'
+    CSV HEADER;
