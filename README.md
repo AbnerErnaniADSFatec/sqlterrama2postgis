@@ -6,17 +6,13 @@ Scripts em SQL para criar as tabelas e migrar os dados para um banco com a exten
 
 PostgreSQL e Docker instalados.
 
-# Criar um volume para guardar os dados
+# Executar a aplicação e migrar os dados do banco
 ```
-$ docker create volume database_vol
-```
-
-# Criar a imagem docker
-```
-$ docker build -t database:latest .
+$ sudo chmod 777 install.sh && ./install
 ```
 
-# Executar em um container
+# Apagar todos os containers e imagens criados acima
+
 ```
-$ docker container run --name database -d -v database_vol:'//your_data' -p 5434:5432 database:latest
+$ sudo chmod 777 danger.sh && ./danger.sh
 ```
