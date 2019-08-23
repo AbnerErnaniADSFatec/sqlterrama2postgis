@@ -29,7 +29,4 @@ CREATE INDEX municipios_brasil_ogr_geometry_idx
 ALTER TABLE public.municipios_brasil
     OWNER to chuva;
 
-COPY public.municipios_brasil 
-    FROM '/csv/municipios_brasil.csv'
-    DELIMITER ';'
-    CSV HEADER;
+\COPY public.municipios_brasil FROM '/home/abner/sqlterrama2postgis/csv/municipios_brasil.csv' DELIMITER ';' CSV HEADER;

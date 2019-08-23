@@ -2,6 +2,10 @@
 
 Scripts em SQL para criar as tabelas e migrar os dados para um banco com a extensão para dados geográficos PostGIS e executar em um container docker.
 
+# Ambiente necessário
+
+PostgreSQL e Docker instalados.
+
 # Criar um volume para guardar os dados
 ```
 $ docker create volume database_vol

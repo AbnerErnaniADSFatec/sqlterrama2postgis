@@ -16,7 +16,4 @@ TABLESPACE pg_default;
 ALTER TABLE public.an_municipio_merge_monthly
     OWNER to chuva;
 
-COPY public.an_municipio_merge_monthly
-    FROM '/csv/an_clim_mensal.csv'
-    DELIMITER ';'
-    CSV HEADER;
+\COPY public.an_municipio_merge_monthly FROM '/home/abner/sqlterrama2postgis/csv/an_clim_mensal.csv' DELIMITER ';' CSV HEADER;
