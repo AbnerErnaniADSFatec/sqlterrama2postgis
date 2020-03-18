@@ -35,7 +35,7 @@ CREATE INDEX municipios_brasil_ogr_geometry_idx
 ALTER TABLE public.municipios_brasil
     OWNER to chuva;
 
-\COPY public.municipios_brasil FROM '/home/abner/sqlterrama2postgis/csv/municipios_brasil.csv' DELIMITER ';' CSV HEADER;
+\COPY public.municipios_brasil FROM '/home/abner/data-smh/sqlterrama2postgis/csv/municipios_brasil.csv' DELIMITER ';' CSV HEADER;
 
 --- Análise Climatológica Diária de municípios
 
@@ -56,7 +56,7 @@ TABLESPACE pg_default;
 ALTER TABLE public.an_municipio_clim_daily
     OWNER to chuva;
 
-\COPY public.an_municipio_clim_daily FROM '/home/abner/sqlterrama2postgis/csv/an_municipio_clim_daily.csv' DELIMITER ';' CSV HEADER;
+\COPY public.an_municipio_clim_daily FROM '/home/abner/data-smh/sqlterrama2postgis/csv/an_municipio_clim_daily.csv' DELIMITER ';' CSV HEADER;
 
 --- Análise Diária de municípios
 
@@ -78,7 +78,7 @@ TABLESPACE pg_default;
 ALTER TABLE public.an_municipio_daily
     OWNER to chuva;
 
-\COPY public.an_municipio_daily FROM '/home/abner/sqlterrama2postgis/csv/an_municipio_daily.csv' DELIMITER ';' CSV HEADER;
+\COPY public.an_municipio_daily FROM '/home/abner/data-smh/sqlterrama2postgis/csv/an_municipio_daily.csv' DELIMITER ';' CSV HEADER;
 
 --- Análise Climatológica Mensal de Municípios
 
@@ -99,7 +99,7 @@ TABLESPACE pg_default;
 ALTER TABLE public.an_municipio_clim_monthly
     OWNER to chuva;
 
-\COPY public.an_municipio_clim_monthly FROM '/home/abner/sqlterrama2postgis/csv/an_municipio_clim_monthly.csv' DELIMITER ';' CSV HEADER;
+\COPY public.an_municipio_clim_monthly FROM '/home/abner/data-smh/sqlterrama2postgis/csv/an_municipio_clim_monthly.csv' DELIMITER ';' CSV HEADER;
 
 --- Análise Mensal de Municípios
 
@@ -121,4 +121,4 @@ TABLESPACE pg_default;
 ALTER TABLE public.an_municipio_monthly
     OWNER to chuva;
 
-\COPY public.an_municipio_monthly FROM '/home/abner/sqlterrama2postgis/csv/an_municipio_monthly.csv' DELIMITER ';' CSV HEADER;
+\COPY public.an_municipio_monthly FROM '/home/abner/data-smh/sqlterrama2postgis/csv/an_municipio_monthly.csv' DELIMITER ';' CSV HEADER;
