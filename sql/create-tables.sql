@@ -2,6 +2,8 @@ CREATE EXTENSION postgis;
 
 CREATE USER chuva WITH PASSWORD 'chuva';
 
+--- Municípios cadastrados com dados
+
 CREATE TABLE public.municipios_brasil
 (
     fid bigint NOT NULL,
@@ -35,35 +37,80 @@ ALTER TABLE public.municipios_brasil
 
 \COPY public.municipios_brasil FROM '/home/abner/sqlterrama2postgis/csv/municipios_brasil.csv' DELIMITER ';' CSV HEADER;
 
-CREATE TABLE public.an_municipio_merge_monthly
+--- Análise Climatológica Diária de municípios
+
+CREATE TABLE public.an_municipio_clim_daily
 (
     fid bigint,
     execution_date timestamp(3) with time zone,
     maxima double precision,
     media double precision,
-    mes text COLLATE pg_catalog."default",
-    pid_an_municipio_merge_monthly integer NOT NULL,
-    CONSTRAINT an_municipio_merge_monthly_pk PRIMARY KEY (pid_an_municipio_merge_monthly)
+    pid_an_municipio_clim_daily integer NOT NULL DEFAULT nextval('an_municipio_clim_daily_pid_an_municipio_clim_daily_seq'::regclass),
+    CONSTRAINT an_municipio_clim_daily_pk PRIMARY KEY (pid_an_municipio_clim_daily)
 )
 WITH (
     OIDS = FALSE
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public.an_municipio_merge_monthly
+ALTER TABLE public.an_municipio_clim_daily
     OWNER to chuva;
 
-\COPY public.an_municipio_merge_monthly FROM '/home/abner/sqlterrama2postgis/csv/an_clim_mensal.csv' DELIMITER ';' CSV HEADER;
+\COPY public.an_municipio_clim_daily FROM '/home/abner/sqlterrama2postgis/csv/an_municipio_clim_daily.csv' DELIMITER ';' CSV HEADER;
+
+--- Análise Diária de municípios
+
+CREATE TABLE public.an_municipio_daily
+(
+    fid bigint,
+    execution_date timestamp(3) with time zone,
+    anomalia double precision,
+    maxima double precision,
+    media double precision,
+    pid_an_municipio_daily integer NOT NULL DEFAULT nextval('an_municipio_daily_pid_an_municipio_daily_seq'::regclass),
+    CONSTRAINT an_municipio_daily_pk PRIMARY KEY (pid_an_municipio_daily)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.an_municipio_daily
+    OWNER to chuva;
+
+\COPY public.an_municipio_daily FROM '/home/abner/sqlterrama2postgis/csv/an_municipio_daily.csv' DELIMITER ';' CSV HEADER;
+
+--- Análise Climatológica Mensal de Municípios
+
+CREATE TABLE public.an_municipio_clim_monthly
+(
+    fid bigint,
+    execution_date timestamp(3) with time zone,
+    maxima double precision,
+    media double precision,
+    pid_an_municipio_clim_monthly integer NOT NULL DEFAULT nextval('an_municipio_clim_monthly_pid_an_municipio_clim_monthly_seq'::regclass),
+    CONSTRAINT an_municipio_clim_monthly_pk PRIMARY KEY (pid_an_municipio_clim_monthly)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.an_municipio_clim_monthly
+    OWNER to chuva;
+
+\COPY public.an_municipio_clim_monthly FROM '/home/abner/sqlterrama2postgis/csv/an_municipio_clim_monthly.csv' DELIMITER ';' CSV HEADER;
+
+--- Análise Mensal de Municípios
 
 CREATE TABLE public.an_municipio_monthly
 (
     fid bigint,
     execution_date timestamp(3) with time zone,
-    ano double precision,
     maxima double precision,
     media double precision,
-    mes text COLLATE pg_catalog."default",
-    pid_an_municipio_monthly integer NOT NULL,
+    pid_an_municipio_monthly integer NOT NULL DEFAULT nextval('an_municipio_monthly_pid_an_municipio_monthly_seq'::regclass),
+    anomalia double precision,
     CONSTRAINT an_municipio_monthly_pk PRIMARY KEY (pid_an_municipio_monthly)
 )
 WITH (
@@ -74,5 +121,4 @@ TABLESPACE pg_default;
 ALTER TABLE public.an_municipio_monthly
     OWNER to chuva;
 
-\COPY public.an_municipio_monthly FROM '/home/abner/sqlterrama2postgis/csv/an_mensal.csv' DELIMITER ';' CSV HEADER;
-
+\COPY public.an_municipio_monthly FROM '/home/abner/sqlterrama2postgis/csv/an_municipio_monthly.csv' DELIMITER ';' CSV HEADER;
